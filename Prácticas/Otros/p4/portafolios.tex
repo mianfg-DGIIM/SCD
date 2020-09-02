@@ -1,0 +1,88 @@
+\documentclass[12pt,spanish]{article}
+% aprovechamiento de la p\'agina -- fill an A4 (210mm x 297mm) page
+% Note: 1 inch = 25.4 mm = 72.27 pt
+% 1 pt = 3.5 mm (approx)
+
+% vertical page layout -- one inch margin top and bottom
+\topmargin      -10 mm   % top margin less 1 inch
+\headheight       0 mm   % height of box containing the head
+\headsep          0 mm   % space between the head and the body of the page
+\textheight     255 mm   % the height of text on the page
+\footskip         7 mm   % distance from bottom of body to bottom of foot
+
+% horizontal page layout -- one inch margin each side
+\oddsidemargin    0 mm     % inner margin less one inch on odd pages
+\evensidemargin   0 mm     % inner margin less one inch on even pages
+\textwidth      159 mm     % normal width of text on page
+
+\setlength{\parindent}{0pt}
+
+\usepackage{float}
+
+\usepackage{amsmath}
+
+\usepackage[doument]{ragged2e}
+\usepackage{babel}
+\usepackage[utf8]{inputenc}
+
+% \usepackage{beton}
+% \usepackage[T1]{fontenc}
+
+\begin{document}
+
+\title{SCD: Práctica4. Implementación de Sistemas de Tiempo Real}
+\author{David Cabezas Berrido}
+\date{\vspace{-5mm}}
+\maketitle
+
+\section*{Preguntas de la actividad 2}
+
+Tareas a planificar:
+
+\begin{table}[H]
+  \centering
+\begin{tabular}{|c|c|c|}
+\hline
+Tarea & $T$  & $C$ \\ \hline \hline
+$A$   & 500  & 100 \\ \hline
+$B$   & 500  & 150 \\ \hline
+$C$   & 1000 & 200 \\ \hline
+$D$   & 2000 & 240 \\ \hline
+\end{tabular}
+\end{table}
+
+Hiperperíodo:
+
+\[T_M=\text{mcm}(500,500,1000,2000) = 2000\]
+
+Subperiodo:
+
+\[T_s \geq 100=\text{min}(100,150,200,240)\]
+\[T_s \leq 500=\text{min}(500,500,1000,2000) \qquad (\text{preferiblemente})\]
+Tomo $T_s = 500$ 
+\begin{verbatim}
+ *---------*----------*---------*--------*
+ | A B C   | A B D    | A B     | A B C  |
+ *---------*----------*---------*--------*
+ |         |          |         |        |
+ 0        500       1000      1500     2000
+\end{verbatim}
+
+\begin{itemize}
+\item Tiempo mínimo de espera al final de las iteraciones del ciclo
+  secundario: \\
+
+  El tiempo es de 10 milisegundos, ocurre al final del segundo ciclo
+  secundario.
+  \[500-100-150-240=10\]
+
+\item ¿Sería planificable si la tarea $D$ tuviese un tiempo de cómputo
+  de 250ms? \\
+
+  Teóricamente la misma planificación sería válida, puesto que el
+  ciclo secundario donde estaba $D$ tiene 10ms de holgura. Pero en la
+  práctica, al mínimo retraso se pasa del deadline, porque el
+  tiempo de cómputo del segundo ciclo secundario es justo el
+  subperíodo.
+\end{itemize}
+\end{document}
