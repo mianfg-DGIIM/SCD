@@ -1,6 +1,6 @@
-[⬅ Más asignaturas del DGIIM](https://github.com/mianfg/DGIIM)
+[⬅ Más asignaturas del DGIIM](https://github.com/mianfg-DGIIM)
 
-![Repo image](https://repository-images.githubusercontent.com/292338378/b8fadd80-ed4b-11ea-86f9-2216b257ab55)
+![Repo image](https://repository-images.githubusercontent.com/292338378/39ec8a4d-497b-4b05-820c-dc6d7dc5dd9d)
 
 # `SCD` Sistemas Concurrentes y Distribuidos
 
